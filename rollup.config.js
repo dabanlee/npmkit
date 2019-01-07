@@ -19,7 +19,7 @@ const configure = {
         format: 'umd',
     }), output({
         file: getFilePath('es'),
-        format: 'umd',
+        format: 'es',
     })],
     plugins: [
         alias({
