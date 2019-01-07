@@ -1,26 +1,39 @@
-import babel from 'rollup-plugin-babel';
-import uglify from 'rollup-plugin-uglify';
-import sourcemaps from 'rollup-plugin-sourcemaps';
+import buble from 'rollup-plugin-buble';
+import alias from 'rollup-plugin-alias';
+import minify from 'rollup-plugin-babel-minify';
 import resolve from 'rollup-plugin-node-resolve';
 
+const isProd = process.env.NODE_ENV === 'production';
 const packages = require('./package.json');
-const fileName = process.env.NODE_ENV === 'development' ? packages.name : `${packages.name}.min`;
+const getFilePath = (type = '') => `dist/${packages.name}${type == '' ? '' : '.'}${type}.js`;
+const output = options => ({
+    name: packages.name,
+    sourcemap: true,
+    ...options,
+});
+
 const configure = {
-    entry: `src/index.js`,
-    moduleName: packages.moduleName,
-    moduleId: packages.moduleName,
-    sourceMap: true,
-    targets: [{
-        dest: `dist/${fileName}.js`,
+    input: 'src/index.js',
+    output: [output({
+        file: getFilePath(),
         format: 'umd',
-    }],
+    }), output({
+        file: getFilePath('es'),
+        format: 'umd',
+    })],
     plugins: [
-        babel(),
-        sourcemaps(),
+        alias({
+            common: './common',
+        }),
+        buble(),
         resolve(),
     ],
+    external: [],
 };
 
-if (process.env.NODE_ENV === 'production') configure.plugins.push(uglify());
+if (isProd) {
+    configure.output.file = `dist/${packages.name}.min.js`;
+    configure.plugins.push(minify());
+}
 
-export default configure;
+module.exports = configure;
