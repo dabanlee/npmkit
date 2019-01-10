@@ -1,5 +1,6 @@
 {
   "name": "npmkit",
+  "moduleName": "npmkit",
   "version": "1.0.1",
   "description": "npm starter.",
   "main": "dist/npmkit.js",
@@ -7,8 +8,7 @@
     "start": "NODE_ENV=development rollup -w -c rollup.config.js",
     "dev": "NODE_ENV=development rollup -c rollup.config.js",
     "prod": "NODE_ENV=production rollup -c rollup.config.js",
-    "publish": "rm -rf dist && npm run dev && npm run prod",
-    "lint": "eslint src"
+    "publish": "rm -rf dist && npm run dev && npm run prod"
   },
   "repository": {
     "url": "https://github.com/JustClear/just-sketch.git",
@@ -19,7 +19,9 @@
   "devDependencies": {
     "rollup-plugin-alias": "^1.5.1",
     "rollup-plugin-babel-minify": "^6.2.0",
-    "rollup-plugin-buble": "^0.19.6",
-    "rollup-plugin-node-resolve": "^3.0.0"
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.2"
   }
 }

@@ -1,19 +1,19 @@
-import buble from 'rollup-plugin-buble';
 import alias from 'rollup-plugin-alias';
 import minify from 'rollup-plugin-babel-minify';
 import resolve from 'rollup-plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript';
 
 const isProd = process.env.NODE_ENV === 'production';
-const packages = require('./package.json');
-const getFilePath = (type = '') => `dist/${packages.name}${type == '' ? '' : '.'}${type}.js`;
+const { moduleName } = require('./package.json');
+const getFilePath = (type = '') => `dist/${moduleName}${type == '' ? '' : '.'}${type}.js`;
 const output = options => ({
-    name: packages.name,
+    name: moduleName,
     sourcemap: true,
     ...options,
 });
 
 const configure = {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [output({
         file: getFilePath(),
         format: 'umd',
@@ -25,14 +25,18 @@ const configure = {
         alias({
             common: './common',
         }),
-        buble(),
+        typescript(),
         resolve(),
     ],
     external: [],
 };
 
 if (isProd) {
-    configure.output.file = `dist/${packages.name}.min.js`;
+    configure.output = configure.output.map(output => {
+        const format = output.format == 'umd' ? '' : `.${output.format}`;
+        output.file = `dist/${moduleName}${format}.min.js`;
+        return output;
+    });
     configure.plugins.push(minify());
 }
 
