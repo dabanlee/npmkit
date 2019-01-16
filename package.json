@@ -1,7 +1,7 @@
 {
   "name": "npmkit",
   "moduleName": "npmkit",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "npm starter.",
   "main": "dist/npmkit.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "publish": "rm -rf dist && npm run dev && npm run prod"
   },
   "repository": {
-    "url": "https://github.com/JustClear/just-sketch.git",
+    "url": "https://github.com/JustClear/npmkit.git",
     "type": "git"
   },
   "author": "JustClear <576839360@qq.com>",

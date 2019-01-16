@@ -4,8 +4,8 @@ import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript';
 
 const isProd = process.env.NODE_ENV === 'production';
-const { moduleName } = require('./package.json');
-const getFilePath = (type = '') => `dist/${moduleName}${type == '' ? '' : '.'}${type}.js`;
+const { moduleName, name: fileName } = require('./package.json');
+const getFilePath = (type = '') => `dist/${fileName}${type == '' ? '' : '.'}${type}.js`;
 const output = options => ({
     name: moduleName,
     sourcemap: true,
@@ -34,7 +34,7 @@ const configure = {
 if (isProd) {
     configure.output = configure.output.map(output => {
         const format = output.format == 'umd' ? '' : `.${output.format}`;
-        output.file = `dist/${moduleName}${format}.min.js`;
+        output.file = `dist/${fileName}${format}.min.js`;
         return output;
     });
     configure.plugins.push(minify());
