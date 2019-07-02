@@ -17,11 +17,11 @@
   "author": "JustClear <576839360@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "rollup-plugin-alias": "^1.5.1",
-    "rollup-plugin-babel-minify": "^6.2.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-typescript": "^1.0.0",
-    "tslib": "^1.9.3",
-    "typescript": "^3.2.2"
+    "rollup-plugin-alias": "^1.5.2",
+    "rollup-plugin-babel-minify": "^9.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.5.2"
   }
 }
