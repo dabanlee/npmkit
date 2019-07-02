@@ -1,1 +1,0 @@
-{"version":3,"file":"npmkit.es.js","sources":["../src/index.ts"],"sourcesContent":["export default function npmkit() {\n    console.log('npmkit');\n}\n"],"names":[],"mappings":"SAAwB,MAAM;IAC1B,OAAO,CAAC,GAAG,CAAC,QAAQ,CAAC,CAAC;CACzB;;;;"}
