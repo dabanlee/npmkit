@@ -6,7 +6,7 @@
   "main": "dist/npmkit.js",
   "scripts": {
     "start": "NODE_ENV=development rollup -w -c rollup.config.js",
-    "docs": "typedoc --module modules --theme minimal --out docs src",
+    "docs": "typedoc --module modules --theme markdown --platform vuepress --out docs src",
     "dev": "NODE_ENV=development rollup -c rollup.config.js",
     "prod": "NODE_ENV=production rollup -c rollup.config.js",
     "publish": "rm -rf dist && npm run dev && npm run prod"
@@ -23,6 +23,8 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^1.10.0",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-markdown": "^2.0.9",
     "typescript": "^3.5.2"
   }
 }
