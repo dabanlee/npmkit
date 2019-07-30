@@ -7,4 +7,5 @@ npm package starter.
 ```sh
 # watching files
 $ npm start
+$ npm run docs
 ```
