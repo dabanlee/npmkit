@@ -22,13 +22,16 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-typescript": "^7.3.3",
+    "add": "^2.0.6",
     "better-docs": "^1.1.6",
     "jsdoc-babel": "^0.5.0",
     "rollup-plugin-alias": "^1.5.2",
     "rollup-plugin-babel-minify": "^9.0.0",
+    "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.2",
+    "yarn": "^1.17.3"
   }
 }
