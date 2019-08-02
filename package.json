@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "description": "npm starter.",
   "main": "dist/npmkit.js",
+  "module": "dist/npmkit.es.js",
+  "types": "src/types/index.d.ts",
   "scripts": {
     "start": "NODE_ENV=development rollup -w -c rollup.config.js",
     "docs": "rm -rf ./docs/docs && jsdoc -c .jsdoc.json --verbose",
