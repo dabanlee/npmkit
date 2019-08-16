@@ -17,15 +17,9 @@
     "url": "https://github.com/JustClear/npmkit.git",
     "type": "git"
   },
-  "author": "JustClear <576839360@qq.com>",
+  "author": "大板栗 <576839360@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-typescript": "^7.3.3",
-    "better-docs": "^1.1.6",
-    "jsdoc-babel": "^0.5.0",
     "rollup-plugin-alias": "^1.5.2",
     "rollup-plugin-babel-minify": "^9.0.0",
     "rollup-plugin-commonjs": "^10.0.1",

@@ -1,6 +1,3 @@
-/**
- * npmkit
- */
 export default function npmkit() {
-    console.log('npmkit');
+    console.log('npmkit')
 }
