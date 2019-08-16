@@ -17,7 +17,7 @@
     "url": "https://github.com/JustClear/npmkit.git",
     "type": "git"
   },
-  "author": "JustClear <576839360@qq.com>",
+  "author": "大板栗 <576839360@qq.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
