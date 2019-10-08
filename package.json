@@ -1,7 +1,7 @@
 {
   "name": "npmkit",
   "moduleName": "npmkit",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "npm starter.",
   "main": "dist/npmkit.js",
   "module": "dist/npmkit.es.js",
