@@ -1,18 +1,4 @@
-- <span style="font-size: 18px;">&nbsp;</span>
+- <span>&nbsp;</span>
 - <span style="font-size: 18px;">Getting started</span>
     - <a href="./#/getting-started/quick-start/" style="font-size: 18px;">Quick Start</a>
     - <a href="./#/getting-started/examples/" style="font-size: 18px;">Examples</a>
-- <span>&nbsp;</span>
-- <span style="font-size: 18px;">Scene</span>
-    - <a href="./#/scene/" style="font-size: 18px;">Scene</a>
-    - <a href="./#/scene/use-scene/" style="font-size: 18px;">useScene</a>
-- <span>&nbsp;</span>
-- <span style="font-size: 18px;">Query</span>
-    - <a href="./#/query/" style="font-size: 18px;">query</a>
-- <span>&nbsp;</span>
-- <span style="font-size: 18px;">Animation</span>
-    - <a href="./#/animate/" style="font-size: 18px;">animate</a>
-    - <a href="./#/animate/animations/" style="font-size: 18px;">animations</a>
-- <span>&nbsp;</span>
-- <span style="font-size: 18px;">Components</span>
-    - <a href="./#/components/" style="font-size: 18px;">components</a>
