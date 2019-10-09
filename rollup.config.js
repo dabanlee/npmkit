@@ -5,12 +5,16 @@ import typescript from 'rollup-plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
 
 const isProd = process.env.NODE_ENV === 'production'
-const { moduleName, name: fileName } = require('./package.json')
+const { moduleName, name } = require('./package.json')
+const fileName = name.replace('', '')
 const getFilePath = (type = '') => `dist/${fileName}${type == '' ? '' : '.'}${type}.js`
 const output = options => ({
     name: moduleName,
     sourcemap: true,
     ...options,
+    globals: {
+        // 
+    },
 })
 
 const configure = {
@@ -27,7 +31,11 @@ const configure = {
             common: './common',
         }),
         typescript(),
-        commonjs(),
+        commonjs({
+            namedExports: {
+                // 
+            },
+        }),
         resolve(),
     ],
     external: [],
