@@ -1,20 +1,24 @@
 import alias from 'rollup-plugin-alias'
 import minify from 'rollup-plugin-babel-minify'
 import resolve from 'rollup-plugin-node-resolve'
-import typescript from 'rollup-plugin-typescript'
+import buble from 'rollup-plugin-buble'
 import commonjs from 'rollup-plugin-commonjs'
 
 const isProd = process.env.NODE_ENV === 'production'
-const { moduleName, name: fileName } = require('./package.json')
+const { moduleName, name } = require('./package.json')
+const fileName = name.replace('', '')
 const getFilePath = (type = '') => `dist/${fileName}${type == '' ? '' : '.'}${type}.js`
 const output = options => ({
     name: moduleName,
     sourcemap: true,
     ...options,
+    globals: {
+        // 
+    },
 })
 
 const configure = {
-    input: 'src/index.ts',
+    input: 'src/index.js',
     output: [output({
         file: getFilePath(),
         format: 'umd',
@@ -26,7 +30,7 @@ const configure = {
         alias({
             common: './common',
         }),
-        typescript(),
+        buble(),
         commonjs(),
         resolve(),
     ],
