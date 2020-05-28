@@ -1,12 +1,11 @@
-import alias from 'rollup-plugin-alias'
 import minify from 'rollup-plugin-babel-minify'
 import resolve from 'rollup-plugin-node-resolve'
-import typescript from 'rollup-plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 import commonjs from 'rollup-plugin-commonjs'
 
 const isProd = process.env.NODE_ENV === 'production'
 const { moduleName, name } = require('./package.json')
-const fileName = name.replace('', '')
+const fileName = 'index'
 const getFilePath = (type = '') => `dist/${fileName}${type == '' ? '' : '.'}${type}.js`
 const output = options => ({
     name: moduleName,
@@ -27,9 +26,6 @@ const configure = {
         format: 'es',
     })],
     plugins: [
-        alias({
-            common: './common',
-        }),
         typescript(),
         commonjs({
             namedExports: {
