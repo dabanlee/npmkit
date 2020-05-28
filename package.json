@@ -3,14 +3,14 @@
   "moduleName": "npmkit",
   "version": "0.1.0",
   "description": "npm starter.",
-  "main": "dist/npmkit.js",
-  "module": "dist/npmkit.es.js",
-  "types": "types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "NODE_ENV=development rollup -w -c rollup.config.js",
     "dev": "NODE_ENV=development rollup -c rollup.config.js",
     "prod": "NODE_ENV=production rollup -c rollup.config.js",
-    "publish": "rm -rf dist && npm run dev && npm run prod"
+    "build": "rm -rf dist && npm run dev && npm run prod"
   },
   "repository": {
     "url": "https://github.com/JustClear/npmkit.git",
@@ -19,12 +19,12 @@
   "author": "大板栗 <576839360@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "rollup-plugin-alias": "^2.0.1",
-    "rollup-plugin-babel-minify": "^9.1.0",
+    "rollup": "^2.11.0",
+    "rollup-plugin-babel-minify": "^10.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-typescript": "^1.0.1",
-    "tslib": "^1.10.0",
-    "typescript": "^3.6.3"
+    "rollup-plugin-typescript2": "^0.27.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
   }
 }
