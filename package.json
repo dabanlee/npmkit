@@ -26,6 +26,7 @@
     "@babel/preset-typescript": "^7.10.1",
     "better-docs": "^2.0.1",
     "jsdoc-babel": "^0.5.0",
+    "rollup": "^2.15.0",
     "rollup-plugin-babel-minify": "^10.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
