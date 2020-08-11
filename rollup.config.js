@@ -1,12 +1,13 @@
-import minify from 'rollup-plugin-babel-minify'
-import resolve from 'rollup-plugin-node-resolve'
-import buble from 'rollup-plugin-buble'
-import commonjs from 'rollup-plugin-commonjs'
+import buble from '@rollup/plugin-buble'
+import { terser } from 'rollup-plugin-terser'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 
 const isProd = process.env.NODE_ENV === 'production'
 const { moduleName, name } = require('./package.json')
-const fileName = 'index'
-const getFilePath = (type = '') => `dist/${fileName}${type == '' ? '' : '.'}${type}.js`
+const fileName = name
+const getFilePath = (format = '') => `dist/${fileName}${format == '' ? '' : '.'}${format}.js`
+
 const output = options => ({
     name: moduleName,
     sourcemap: true,
@@ -27,8 +28,12 @@ const configure = {
     })],
     plugins: [
         buble(),
-        commonjs(),
-        resolve(),
+        commonjs({
+            namedExports: {
+                // 
+            },
+        }),
+        nodeResolve(),
     ],
     external: [],
 }
@@ -39,7 +44,7 @@ if (isProd) {
         output.file = `dist/${fileName}${format}.min.js`
         return output
     })
-    configure.plugins.push(minify())
+    configure.plugins.push(terser())
 }
 
 module.exports = configure
