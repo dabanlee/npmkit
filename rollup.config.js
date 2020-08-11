@@ -1,11 +1,11 @@
-import minify from 'rollup-plugin-babel-minify'
-import resolve from 'rollup-plugin-node-resolve'
+import { terser } from 'rollup-plugin-terser'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import typescript from 'rollup-plugin-typescript2'
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 
 const isProd = process.env.NODE_ENV === 'production'
 const { moduleName, name } = require('./package.json')
-const fileName = 'index'
+const fileName = name
 const getFilePath = (format = '') => `dist/${fileName}${format == '' ? '' : '.'}${format}.js`
 const output = options => ({
     name: moduleName,
@@ -32,7 +32,7 @@ const configure = {
                 // 
             },
         }),
-        resolve(),
+        nodeResolve(),
     ],
     external: [],
 }
@@ -43,7 +43,7 @@ if (isProd) {
         output.file = `dist/${fileName}${format}.min.js`
         return output
     })
-    configure.plugins.push(minify())
+    configure.plugins.push(terser())
 }
 
 module.exports = configure
