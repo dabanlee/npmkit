@@ -27,11 +27,7 @@ const configure = {
     })],
     plugins: [
         typescript(),
-        commonjs({
-            namedExports: {
-                // 
-            },
-        }),
+        commonjs(),
         nodeResolve(),
     ],
     external: [],
