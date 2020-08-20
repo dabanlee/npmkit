@@ -28,11 +28,7 @@ const configure = {
     })],
     plugins: [
         buble(),
-        commonjs({
-            namedExports: {
-                // 
-            },
-        }),
+        commonjs(),
         nodeResolve(),
     ],
     external: [],
