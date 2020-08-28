@@ -2,9 +2,9 @@
   "name": "npmkit",
   "moduleName": "npmkit",
   "version": "0.1.0",
-  "description": "npm starter.",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "description": "npm package starter.",
+  "main": "dist/npmkit.js",
+  "module": "dist/npmkit.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "NODE_ENV=development rollup -w -c rollup.config.js",

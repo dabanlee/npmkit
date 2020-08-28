@@ -5,8 +5,8 @@ import commonjs from '@rollup/plugin-commonjs'
 
 const isProd = process.env.NODE_ENV === 'production'
 const { moduleName, name } = require('./package.json')
-const fileName = name
-const getFilePath = (format = '') => `dist/${fileName}${format == '' ? '' : '.'}${format}.js`
+const fileName = name.includes('/') ? name.split('/')[1] : name
+const getFilePath = (format = '') => `dist/${fileName}${format == 'umd' ? '' : `.${format}`}.js`
 const output = options => ({
     name: moduleName,
     sourcemap: true,
@@ -16,15 +16,14 @@ const output = options => ({
     },
 })
 
+const formats = ['umd', 'es']
+
 const configure = {
     input: 'src/index.ts',
-    output: [output({
-        file: getFilePath(),
-        format: 'umd',
-    }), output({
-        file: getFilePath('es'),
-        format: 'es',
-    })],
+    output: formats.map(format => output({
+        file: getFilePath(format),
+        format,
+    })),
     plugins: [
         typescript(),
         commonjs(),
