@@ -46,4 +46,4 @@ if (isProd) {
     configure.plugins.push(minify())
 }
 
-module.exports = configure
+export default configure
