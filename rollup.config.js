@@ -43,4 +43,4 @@ if (isProd) {
     configure.plugins.push(terser())
 }
 
-module.exports = configure
+export default configure
