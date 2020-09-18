@@ -43,4 +43,4 @@ function destName(name = '', format = '', minify = false) {
     return `dist/${name}${format == 'umd' ? '' : `.${format}`}${minify ? '.min' : ''}.js`
 }
 
-module.exports = configure
+export default configure
