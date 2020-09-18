@@ -14,7 +14,7 @@
     "build": "rm -rf dist && npm run dev && npm run prod"
   },
   "repository": {
-    "url": "https://github.com/JustClear/npmkit.git",
+    "url": "https://github.com/dabanlee/npmkit.git",
     "type": "git"
   },
   "author": "大板栗 <576839360@qq.com>",
