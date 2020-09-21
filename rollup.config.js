@@ -1,46 +1,71 @@
-import { terser } from 'rollup-plugin-terser'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import typescript from 'rollup-plugin-typescript2'
-import commonjs from '@rollup/plugin-commonjs'
+import vue from 'rollup-plugin-vue'
+import css from 'rollup-plugin-css-only'
+import typescript from 'rollup-plugin-typescript'
 
-const isProd = process.env.NODE_ENV === 'production'
-const { moduleName, name: _name, dependencies = {}, peerDependencies = {} } = require('./package.json')
-const name = _name.includes('/') ? _name.split('/')[1] : _name
+const { name } = require('./package.json')
 
-const formats = ['umd', 'es']
-
-const configure = {
-    input: 'src/index.ts',
-    output: formats.map(format => ({
-        name: moduleName,
-        format,
-        sourcemap: true,
-        file: destName(name, format),
-        globals: {
-            // 
-        },
-    })),
+export default [{
+    input: `src/index.ts`,
+    output: {
+        // for TypeScript build
+        format: `esm`,
+        file: `dist/${name}.es.js`
+    },
     plugins: [
-        typescript(),
-        commonjs(),
-        nodeResolve(),
+        typescript({
+            tsconfig: false,
+            experimentalDecorators: true,
+            module: `es2015`,
+        }),
+        css({
+            output: `dist/${name}.css`,
+        }),
+        vue({
+            css: false,
+        }),
     ],
-    external: [
-        ...Object.keys(dependencies),
-        ...Object.keys(peerDependencies),
+}, {
+    input: `src/index.ts`,
+    output: {
+        // for SSR build
+        format: `cjs`,
+        file: `dist/${name}.ssr.js`
+    },
+    plugins: [
+        typescript({
+            tsconfig: false,
+            experimentalDecorators: true,
+            module: `es2015`,
+        }),
+        css({
+            output: `dist/${name}.css`,
+        }),
+        vue({
+            css: false,
+            template: { 
+                optimizeSSR: true,
+             },
+        }),
     ],
-}
-
-if (isProd) {
-    configure.output = configure.output.map(output => {
-        output.file = destName(name, output.format, true)
-        return output
-    })
-    configure.plugins.push(terser())
-}
-
-function destName(name = '', format = '', minify = false) {
-    return `dist/${name}${format == 'umd' ? '' : `.${format}`}${minify ? '.min' : ''}.js`
-}
-
-export default configure
+}, {
+    input: `src/index.js`,
+    output: {
+        // for Broswer build
+        name: `Component`,
+        format: `umd`,
+        file: `dist/${name}.js`
+    },
+    plugins: [
+        typescript({
+            tsconfig: false,
+            experimentalDecorators: true,
+            module: `es2015`,
+        }),
+        css({
+            output: `dist/${name}.css`,
+        }),
+        vue({
+            css: false,
+        }),
+    ],
+}]

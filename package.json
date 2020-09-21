@@ -7,9 +7,9 @@
   "module": "dist/npmkit.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "NODE_ENV=development rollup -w -c rollup.config.js",
-    "dev": "NODE_ENV=development rollup -c rollup.config.js",
-    "prod": "NODE_ENV=production rollup -c rollup.config.js",
+    "start": "rollup -w -c rollup.config.js",
+    "dev": "rollup -c rollup.config.js",
+    "prod": "rollup -c rollup.config.js",
     "build": "rm -rf dist && npm run dev && npm run prod"
   },
   "repository": {
@@ -19,12 +19,17 @@
   "author": "大板栗 <576839360@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@vue/compiler-sfc": "^3.0.0",
     "rollup": "^2.26.4",
-    "rollup-plugin-terser": "^7.0.0",
-    "rollup-plugin-typescript2": "^0.27.1",
+    "rollup-plugin-css-only": "^2.1.0",
+    "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^2.0.0",
     "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "rollup-plugin-vue": "^6.0.0-beta.10"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.12"
   }
 }
