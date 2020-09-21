@@ -1,3 +1,4 @@
+import { VueConstructor } from 'vue/types/umd';
 import Component from './components/Component.vue'
 
 export default {
