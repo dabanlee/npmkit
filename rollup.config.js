@@ -4,22 +4,31 @@ import typescript from 'rollup-plugin-typescript'
 
 const { name } = require('./package.json')
 
+const plugins = [
+    typescript({
+        tsconfig: false,
+        experimentalDecorators: true,
+        module: `es2015`,
+    }),
+    css({
+        output: `dist/${name}.css`,
+    }),
+]
+
 export default [{
     input: `src/index.ts`,
-    output: {
+    output: [{
         // for TypeScript build
         format: `esm`,
         file: `dist/${name}.es.js`
-    },
+    }, {
+        // for Broswer build
+        name: `Component`,
+        format: `umd`,
+        file: `dist/${name}.js`
+    }],
     plugins: [
-        typescript({
-            tsconfig: false,
-            experimentalDecorators: true,
-            module: `es2015`,
-        }),
-        css({
-            output: `dist/${name}.css`,
-        }),
+        ...plugins,
         vue({
             css: false,
         }),
@@ -32,40 +41,12 @@ export default [{
         file: `dist/${name}.ssr.js`
     },
     plugins: [
-        typescript({
-            tsconfig: false,
-            experimentalDecorators: true,
-            module: `es2015`,
-        }),
-        css({
-            output: `dist/${name}.css`,
-        }),
+        ...plugins,
         vue({
             css: false,
             template: { 
                 optimizeSSR: true,
              },
-        }),
-    ],
-}, {
-    input: `src/index.js`,
-    output: {
-        // for Broswer build
-        name: `Component`,
-        format: `umd`,
-        file: `dist/${name}.js`
-    },
-    plugins: [
-        typescript({
-            tsconfig: false,
-            experimentalDecorators: true,
-            module: `es2015`,
-        }),
-        css({
-            output: `dist/${name}.css`,
-        }),
-        vue({
-            css: false,
         }),
     ],
 }]
