@@ -1,7 +1,7 @@
 import Component from './components/Component.vue'
 
 export default {
-    install(Vue) {
+    install(Vue: VueConstructor) {
         Vue.component('component-name', Component)
     },
 };
