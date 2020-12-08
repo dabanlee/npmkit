@@ -1,19 +1,21 @@
 import vue from 'rollup-plugin-vue'
 import css from 'rollup-plugin-css-only'
-import typescript from 'rollup-plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 
 const { name } = require('./package.json')
 
 const plugins = [
     typescript({
-        tsconfig: false,
+        // tsconfig: false,
         experimentalDecorators: true,
         module: `es2015`,
     }),
     css({
-        output: `dist/${name}.css`,
+        output: `${name}.css`,
     }),
 ]
+
+const externals = ['vue']
 
 export default [{
     input: `src/index.ts`,
@@ -25,7 +27,10 @@ export default [{
         // for Broswer build
         name: `Component`,
         format: `umd`,
-        file: `dist/${name}.js`
+        file: `dist/${name}.js`,
+        globals: {
+            vue: `Vue`,
+        },
     }],
     plugins: [
         ...plugins,
@@ -33,6 +38,7 @@ export default [{
             css: false,
         }),
     ],
+    externals,
 }, {
     input: `src/index.ts`,
     output: {
@@ -49,4 +55,5 @@ export default [{
              },
         }),
     ],
+    externals,
 }]

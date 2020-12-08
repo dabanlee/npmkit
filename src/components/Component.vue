@@ -3,16 +3,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
+export default {
   data: () => ({
     name: 'dabanli',
   }),
-  mounted() {
-    this.name = 'dabanli' as string
+  setup() {
+    return { name }
   },
-})
+}
 </script>
 
 <style scoped>

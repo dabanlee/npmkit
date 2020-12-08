@@ -1,9 +1,10 @@
-import { VueConstructor } from 'vue/types/umd';
+import Vue from 'vue'
 import Component from './components/Component.vue'
 
 export default {
-    install(Vue: VueConstructor) {
-        Vue.component('component-name', Component)
+    install(app: Vue.App) {
+        // @ts-ignore
+        app.component('component-name', Component)
     },
 };
 
