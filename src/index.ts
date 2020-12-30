@@ -6,6 +6,6 @@ export default {
         // @ts-ignore
         app.component('component-name', Component)
     },
-};
+}
 
 export { Component }
