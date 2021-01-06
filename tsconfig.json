@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true
-  }
+  },
+  "include": ["src", "types", "test"],
+  "exclude": ["node_modules", "dist"],
 }
