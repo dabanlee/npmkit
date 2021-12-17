@@ -3,14 +3,14 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import typescript from 'rollup-plugin-typescript2'
 import commonjs from '@rollup/plugin-commonjs'
 
-const isProd = process.env.NODE_ENV === 'production'
-const { moduleName, name: _name, dependencies = {}, peerDependencies = {} } = require('./package.json')
-const name = _name.includes('/') ? _name.split('/')[1] : _name
+const isProd = process.env.NODE_ENV === `production`
+const { moduleName, name: _name, dependencies = {}, peerDependencies = {} } = require(`./package.json`)
+const name = _name.includes(`/`) ? _name.split(`/`)[1] : _name
 
-const formats = ['umd', 'es']
+const formats = [`umd`, `es`]
 
 const configure = {
-    input: 'src/index.ts',
+    input: `src/index.ts`,
     output: formats.map(format => ({
         name: moduleName,
         format,
@@ -39,8 +39,8 @@ if (isProd) {
     configure.plugins.push(terser())
 }
 
-function destName(name = '', format = '', minify = false) {
-    return `dist/${name}${format == 'umd' ? '' : `.${format}`}${minify ? '.min' : ''}.js`
+function destName(name = ``, format = ``, minify = false) {
+    return `dist/${ name }${ format == `umd` ? `` : `.${ format }` }${ minify ? `.min` : `` }.js`
 }
 
 export default configure
