@@ -22,7 +22,7 @@ export default [{
     output: [{
         // for TypeScript build
         format: `esm`,
-        file: `dist/${name}.es.js`
+        file: `dist/${name}.es.js`,
     }, {
         // for Broswer build
         name: `Component`,
@@ -44,15 +44,15 @@ export default [{
     output: {
         // for SSR build
         format: `cjs`,
-        file: `dist/${name}.ssr.js`
+        file: `dist/${name}.ssr.js`,
     },
     plugins: [
         ...plugins,
         vue({
             css: false,
-            template: { 
+            template: {
                 optimizeSSR: true,
-             },
+            },
         }),
     ],
     externals,

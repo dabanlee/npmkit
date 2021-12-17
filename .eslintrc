@@ -156,7 +156,7 @@
         "prefer-template": ["error"],
         // ...xxx
         "rest-spread-spacing": ["error", "never"],
-        "template-curly-spacing": ["error", "always"],
+        // "template-curly-spacing": ["error", "always"],
         "no-duplicate-imports": ["error"]
     }
 }
